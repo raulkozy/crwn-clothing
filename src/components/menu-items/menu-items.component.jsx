@@ -1,10 +1,11 @@
 import React from 'react';
+import { withRouter } from "react-router-dom";
 import './menu-item.styles.scss';
 
-export const MenuItems = ({title, imageUrl}) => {
-    return (
+const MenuItem = ({title, imageUrl, history, linkUrl, match}) => {
+     return (
                 <div 
-                className='menu-item'>
+                className='menu-item' onClick={() => history.push(`${match.url}${linkUrl}`)}>
                     <div 
                     className='background-image'
                     style={{
@@ -16,35 +17,7 @@ export const MenuItems = ({title, imageUrl}) => {
                         <span className='subtitle'>SHOP NOW</span>
                     </div>
                 </div>
-                // <div className='menu-item'>
-                //     <div className='content'>
-                //         <div className='title'>HATS</div>
-                //         <span className='subtitle'>SHOP NOW</span>
-                //     </div>
-                // </div>
-                // <div className='menu-item'>
-                //     <div className='content'>
-                //         <div className='title'>JACKETS</div>
-                //         <span className='subtitle'>SHOP NOW</span>
-                //     </div>
-                // </div>
-                // <div className='menu-item'>
-                //     <div className='content'>
-                //         <div className='title'>SWEATERS</div>
-                //         <span className='subtitle'>SHOP NOW</span>
-                //     </div>
-                // </div>
-                // <div className='menu-item'>
-                //     <div className='content'>
-                //         <div className='title'>GIRLS</div>
-                //         <span className='subtitle'>SHOP NOW</span>
-                //     </div>
-                // </div>
-                // <div className='menu-item'>
-                //     <div className='content'>
-                //         <div className='title'>GUYS</div>
-                //         <span className='subtitle'>SHOP NOW</span>
-                //     </div>
-                // </div>
-    )
-}
+     )
+                }
+
+export default withRouter(MenuItem);
