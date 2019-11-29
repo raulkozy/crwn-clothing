@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 import { selectCartItems, selectCartTotal } from "../../redux/cart/cart.selector";
 
+
 const CheckoutPage = ({ cartItems, total}) => {
     return(
         <div className="checkout-page">
