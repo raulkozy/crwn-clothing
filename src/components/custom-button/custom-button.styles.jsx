@@ -22,12 +22,9 @@ export const invertedButtonStyles = css`
 `
 
 const getButtonStyles = props => {
-    console.log(props)
     if(props.isGoogleSignIn){
         return googleSignInStyles;
     }
-    console.log(props.inverted ? invertedButtonStyles : buttonStyles);
-    
     return props.inverted ? invertedButtonStyles : buttonStyles;
 }
 
