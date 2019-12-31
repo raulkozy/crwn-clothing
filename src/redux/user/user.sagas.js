@@ -33,8 +33,6 @@ export function* onEmailSignInStart() {
 
 export function* getSnapshotFromUserAuth(userAuth, additionalData) {
     try {
-        console.log(userAuth);
-        
         const userRef = yield call(createUserProfileDocument, userAuth, additionalData);
         const userSnapshot = yield userRef.get();
         yield put(
@@ -73,12 +71,11 @@ export function* onUserSignOutStart() {
     yield takeLatest(UserActionTypes.SIGN_OUT_START, signOut)
 }
 
-export function* signUp({ payload: { email, password, displayName }}) {
-    try{
-        const { user } = yield auth.createUserWithEmailAndPassword(email,password)
-        console.log(user.displayName);
-        yield put(signUpSuccess( { user, additionalData:  { displayName } } ))
-    }catch (error) {
+export function* signUp({ payload: { email, password, displayName } }) {
+    try {
+        const { user } = yield auth.createUserWithEmailAndPassword(email, password)
+        yield put(signUpSuccess({ user, additionalData: { displayName } }))
+    } catch (error) {
         yield put(signUpFailure(error))
     }
 }
@@ -87,7 +84,7 @@ export function* onUserSignUpStart() {
     yield takeLatest(UserActionTypes.SIGN_UP_START, signUp)
 }
 
-export function* signInAfterSignUp({ payload: { user, additionalData} }) {
+export function* signInAfterSignUp({ payload: { user, additionalData } }) {
     yield getSnapshotFromUserAuth(user, additionalData)
 }
 
@@ -97,9 +94,9 @@ export function* onSignUpSuccess() {
 
 export function* userSagas() {
     yield all([
-        call(onGoogleSignInStart), 
-        call(onEmailSignInStart), 
-        call(onCheckUserSession), 
+        call(onGoogleSignInStart),
+        call(onEmailSignInStart),
+        call(onCheckUserSession),
         call(onUserSignOutStart),
         call(onUserSignUpStart),
         call(onSignUpSuccess)
