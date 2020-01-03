@@ -23,7 +23,6 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
   if (!snapshot.exists) {
     const { displayName, email } = userAuth;
-    console.log(displayName);
     
     const createdAt = new Date();
     try {
@@ -42,7 +41,6 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
 export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
   const collectionRef = firestore.collection(collectionKey);
-  console.log(collectionRef);
 
   const batch = firestore.batch();
 
