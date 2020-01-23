@@ -20,6 +20,7 @@
     "crwn-clothing": "file:client",
     "dotenv": "7.0.0",
     "express": "^4.16.4",
+    "express-sslify": "^1.2.0",
     "server": "^1.0.21",
     "stripe": "6.28.0"
   },
